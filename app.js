@@ -16,7 +16,7 @@ if (!FRONTEND_URL) {
   console.log("✅ FRONTEND_URL loaded:", FRONTEND_URL);
 }const app = express();
 app.use(cors({
-  origin: FRONTEND_URL,
+  origin: FRONTEND_URL || "http://localhost:5173",
   credentials: true
 }));
 app.use(express.json())
