@@ -22,9 +22,9 @@ const __dirname = path.dirname(__filename);
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))
-app.use("/api/auth", authRoutes)
-app.use("/api/slots", slotRoutes)
-app.use("/api/bookings", bookingRoutes)
+app.use("/auth", authRoutes)
+app.use("/slots", slotRoutes)
+app.use("/bookings", bookingRoutes)
 app.get("/", (req, res) => {
   res.send("Hello World")
 })
