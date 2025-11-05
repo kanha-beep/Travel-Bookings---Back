@@ -9,10 +9,12 @@ import bookingRoutes from "./routes/booking.routes.js"
 import { fileURLToPath } from "url";
 
 import path from "path"
+const FRONTEND_URL = process.env.FRONTEND_URL
+console.log("frontend url: ", FRONTEND_URL)
 const app = express();
 dotenv.config();
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: FRONTEND_URL,
   credentials: true
 }));
 app.use(express.json())
