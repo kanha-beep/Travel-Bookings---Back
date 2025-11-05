@@ -7,12 +7,14 @@ import authRoutes from "./routes/auth.routes.js"
 import slotRoutes from "./routes/slot.routes.js"
 import bookingRoutes from "./routes/booking.routes.js"
 import { fileURLToPath } from "url";
-
+dotenv.config();
 import path from "path"
 const FRONTEND_URL = process.env.FRONTEND_URL
-console.log("frontend url: ", FRONTEND_URL)
-const app = express();
-dotenv.config();
+if (!FRONTEND_URL) {
+  console.error("❌ FRONTEND_URL is NOT defined in .env file");
+} else {
+  console.log("✅ FRONTEND_URL loaded:", FRONTEND_URL);
+}const app = express();
 app.use(cors({
   origin: FRONTEND_URL,
   credentials: true
