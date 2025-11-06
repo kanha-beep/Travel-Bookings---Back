@@ -28,25 +28,25 @@ export const editSlots = async (req, res, next) => {
     const { id } = req.params
     const slots = await Slot.findById(id)
     if (!slots) return next(new ExpressError(404, "No slots found",));
-    console.log("edit slots: ", slots)
+    // console.log("edit slots: ", slots)
     res.status(200).json({ message: "Edit slots", slots })
 }
 export const updateSlots = async (req, res, next) => {
     const { id } = req.params
     // console.log("update images: ", req.files)
     const images = req.files.map((file) => file.filename);
-    console.log("update images: ", images)
+    // console.log("update images: ", images)
     const { title, price, food, location, description, number } = req.body;
     const slots = await Slot.findByIdAndUpdate(id, { title, price, food, location, description, number, images })
     if (!slots) return next(new ExpressError(404, "No slots found",));
-    console.log("update slots: ", slots)
+    // console.log("update slots: ", slots)
     res.status(200).json({ message: "Update slots", slots })
 }
 export const deleteSlots = async (req, res, next) => {
     const { id } = req.params
     const slots = await Slot.findByIdAndDelete(id)
     if (!slots) return next(new ExpressError(404, "No slots found",));
-    console.log("delete slots: ", slots)
+    // console.log("delete slots: ", slots)
     res.status(200).json({ message: "Delete slots", slots })
 }
 export const ownerDashboard = async (req, res, next) => {
