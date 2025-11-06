@@ -16,8 +16,8 @@ if (!FRONTEND_URL) {
   console.log("✅ FRONTEND_URL loaded:", FRONTEND_URL);
 } const app = express();
 const allowedOrigins = [
+  FRONTEND_URL,
   "https://travel-bookings-front-8pxk.vercel.app",
-  "https://travel-bookings-front-8pxk-git-main-kanha-guptas-projects.vercel.app",
   "http://localhost:5173"
 ];
 app.use(cors({
