@@ -14,11 +14,27 @@ if (!FRONTEND_URL) {
   console.error("❌ FRONTEND_URL is NOT defined in .env file");
 } else {
   console.log("✅ FRONTEND_URL loaded:", FRONTEND_URL);
-}const app = express();
+} const app = express();
+const allowedOrigins = [
+  "https://travel-bookings-front-8pxk.vercel.app",
+  "https://travel-bookings-front-8pxk-git-main-kanha-guptas-projects.vercel.app",
+  "http://localhost:5173"
+];
 app.use(cors({
-  origin: FRONTEND_URL || "http://localhost:5173",
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true)
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(null, false);
+    }
+  },
   credentials: true
 }));
+// app.use(cors({
+//   origin: allowedOrigins,
+//   credentials: true
+// }));
 app.use(express.json())
 connectDB()
 const __filename = fileURLToPath(import.meta.url);
